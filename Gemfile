@@ -4,13 +4,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.8"
+gem "rails", "~> 7.0.6"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -65,8 +65,31 @@ group :development do
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  # Testing system rspec
+  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'factory_bot_rails'
   gem "capybara"
   gem "selenium-webdriver"
-
+  gem "webdrivers"
+  gem 'launchy'
+  gem 'simplecov', require: false
+  gem "webmock"
 end
+
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :development, :test do
+  gem "pry-byebug"
+end
+
+group :production do
+   gem 'pg'
+end
+
+# Password digest stuff
+gem 'bcrypt', '~> 3.1.7'
+
+# API HTTP requests
+gem "httparty"
